@@ -11,14 +11,24 @@
   <script>
     (function () {
       const params = new URLSearchParams(location.search);
-      const id = location.pathname.split('/').pop(); // /l/8564855 => "8564855"
+      const id = params.get('id'); // /l/8564855 => "8564855"
       const name = params.get('name') || 'List';
+
+      if (!id) {
+        let message = document.getElementById('message')
+        if (message) {
+          message.innerText("Incorrect or missing id. You can close this page.")
+        }
+        return;
+      }
 
       const deep = `itsawrap://lists/${encodeURIComponent(id)}?name=${encodeURIComponent(name)}`;
 
-      const iosStore = 'https://apps.apple.com/app/idYOUR_APP_ID';
-      const androidStore = 'https://play.google.com/store/apps/details?id=com.company.itsawrap';
-      const fallback = /Android/i.test(navigator.userAgent) ? androidStore : iosStore;
+      // const iosStore = 'https://apps.apple.com/app/idYOUR_APP_ID';
+      // const androidStore = 'https://play.google.com/store/apps/details?id=com.company.itsawrap';
+      // const fallback = /Android/i.test(navigator.userAgent) ? androidStore : iosStore;
+
+      const fallback = "https://themoviedb.org"
 
       const start = Date.now();
       window.location = deep;
@@ -30,6 +40,6 @@
   </script>
 </head>
 <body>
-  <p>Opening list in the app…</p>
+  <p id="message">Opening list in the app…</p>
 </body>
 </html>
