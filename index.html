@@ -15,7 +15,8 @@
       const name = params.get('name') || 'List'
 
       if (!id) {
-        document.getElementById('message').innerText = 'Incorrect or missing id. You can close this window now.'
+        let message = document.getElementById('message')
+        if (message) message.innerText = 'Incorrect or missing id. You can close this window now.'
         return
       }
 
