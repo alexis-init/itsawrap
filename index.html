@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>Opening in It’s a Wrap…</title>
@@ -7,7 +8,7 @@
   <meta property="og:title" content="It’s a Wrap" />
   <meta property="og:description" content="Discover movies and tv shows to watch tonight" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script>
+  <script defer>
     (function () {
       // /$listId/?name=$encodedName
       const params = new URLSearchParams(location.search)
@@ -38,7 +39,9 @@
     })();
   </script>
 </head>
+
 <body>
   <p id="message">Opening list in the app…</p>
 </body>
+
 </html>
